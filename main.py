@@ -1,6 +1,7 @@
 import json
 import tkinter as tk
 import tkinter.font
+import os
 from datetime import datetime
 from tkinter import *
 from tkinter import ttk
@@ -89,8 +90,10 @@ def getweather():
         preclabels.append(preclabel)
 
         crow = crow + 1
-        path = 'C:\\Users\\35988\\Documents\\Programming\\python\\weathericon\\'
-        dimage = Image.open(path + wxicon + "@2x.png")
+        scr_dir = os.path.dirname(__file__)
+        img_dir_rel = "images\\"
+        img_dir_abs = os.path.join(scr_dir,img_dir_rel)
+        dimage = Image.open(img_dir_abs + wxicon + "@2x.png")
         dimage = dimage.resize((80, 80), Image.ANTIALIAS);
         tkimage = ImageTk.PhotoImage(dimage)
         iconlabel = ttk.Label(image=tkimage)
